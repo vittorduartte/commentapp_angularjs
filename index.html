@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf 8">
+    <title>Angular JS Starting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body ng-app="commentForm">
+
+    <div class="container"  ng-controller="commentFormController">
+        <h1>Comentário App</h1>
+        <hr>
+        <form action>
+            <div class="form-todo form-group">
+                <p>
+                    <input class="form-control" name="name" placeholder="Nome" ng-model="name"/>
+                </p>
+                <p>
+                    <textarea class="form-control" name="message" rows="3" placeholder="Comentário"
+                        ng-model="message"></textarea>
+                </p>
+                <button type="button" class="btn btn-primary" ng-click="addComment()">Comentar</button>
+            </div>
+        </form>
+        <h1>Comentários</h1>
+        <hr />
+        <div class="list-group">
+            <p ng-if="comments.length <= 0"><small>Não temos comentários para listar.</small></p>
+            <div class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="comment in comments">
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">
+                        Autor:
+                        <strong>{{comment.name}}</strong>
+                    </p>
+                </div>
+                <p class="mb-1">{{comment.message}}</p>
+                <div>
+                    <a href="#" title="Excluir" ng-click="deleteComment($index)">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+    <script src="./lib/commentForm.js"></script>
+</body>
+
+</html>
